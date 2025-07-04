@@ -6,11 +6,15 @@ CONFIG += c++17
 DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
+    ZZConfigWidget/ZZConfigWidget.cpp \
+    ZZConfigWidget/ZZOneParameterWidget.cpp \
     main.cpp \
     MainWindow.cpp
 
 HEADERS += \
-    MainWindow.h
+    MainWindow.h \
+    ZZConfigWidget/ZZConfigWidget.h \
+    ZZConfigWidget/ZZOneParameterWidget.h
 
 RESOURCES += \
     ZhuZhaoGUIResource.qrc
