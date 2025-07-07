@@ -5,6 +5,7 @@
 
 
 class ZZConfigWidget;
+class VThumnailList;
 class QPushButton;
 
 class MainWindow : public QMainWindow
@@ -16,6 +17,7 @@ public:
     ~MainWindow();
 private:
     bool InitWidget();
+    void InitContent();
 private:
     QWidget* m_pMainWidget{Q_NULLPTR};
     QWidget* m_pLeftTopWidget{Q_NULLPTR};
@@ -23,5 +25,6 @@ private:
     QWidget* m_pRightWidget{Q_NULLPTR};
 
     ZZConfigWidget* m_pConfigWidget{Q_NULLPTR};
+    VThumnailList* m_pVThumnailList{Q_NULLPTR};
 };
 #endif // MAINWINDOW_H

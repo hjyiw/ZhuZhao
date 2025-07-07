@@ -12,11 +12,12 @@ ZZConfigWidget::ZZConfigWidget(QWidget *parent)
     , m_pRunBtn(Q_NULLPTR)
 {
     // this->setMinimumSize(400,300);
-    initWidget();
+    InitWidget();
+    InitContent();
 }
 
 // 初始化界面
-void ZZConfigWidget::initWidget()
+void ZZConfigWidget::InitWidget()
 {
     const auto CreateOneParaWidget = [&](QString strParaName)-> ZZOneParameterWidget*{
         auto* pOneParaWidget = new ZZOneParameterWidget(strParaName,this);
@@ -57,12 +58,17 @@ void ZZConfigWidget::initWidget()
     auto* pThirdParamWidget = CreateOneParaWidget(tr("ThirdParam"));
     auto* pFourthParamWidget = CreateOneParaWidget(tr("FourthParam"));
 
+    // 加入列表
+    m_listParamWidget.push_back(pFirstParamWidget);
+    m_listParamWidget.push_back(pSecondParamWidget);
+    m_listParamWidget.push_back(pThirdParamWidget);
+    m_listParamWidget.push_back(pFourthParamWidget);
+
+    // 加入布局
     pCenterVLayout->addWidget(pFirstParamWidget);
     pCenterVLayout->addWidget(pSecondParamWidget);
     pCenterVLayout->addWidget(pThirdParamWidget);
     pCenterVLayout->addWidget(pFourthParamWidget);
-
-
 
     // 下布局
     auto* pBottomHLayout = new QHBoxLayout(m_pBottomWidget);
@@ -92,4 +98,23 @@ void ZZConfigWidget::initWidget()
 
 
 
+}
+
+// 初始化内容
+void ZZConfigWidget::InitContent()
+{
+    // 加载图片信号槽
+    for(const auto& pParamWidget : m_listParamWidget){
+        connect(pParamWidget,&ZZOneParameterWidget::SigLoadImg,this,&ZZConfigWidget::SlotAddImgs);
+    }
+}
+
+// 添加图片槽函数
+void ZZConfigWidget::SlotAddImgs()
+{
+    QList<QImage> imgs;
+    for(const auto& pParamWidget : m_listParamWidget){
+        imgs.push_back(pParamWidget->GetImage());
+    }
+    emit SigLoadImgs(imgs);
 }

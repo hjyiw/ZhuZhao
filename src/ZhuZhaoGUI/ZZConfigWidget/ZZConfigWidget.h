@@ -4,6 +4,10 @@
 #include <QWidget>
 #include <QLabel>
 #include <QPushButton>
+#include <QList>
+#include <QImage>
+
+class ZZOneParameterWidget;
 class ZZConfigWidget : public QWidget
 {
     Q_OBJECT
@@ -18,7 +22,15 @@ private:
     QLabel* m_pTitleLabel;
     QPushButton* m_pResetBtn;
     QPushButton* m_pRunBtn;
+
+    QList<ZZOneParameterWidget*> m_listParamWidget;
 private:
-    void initWidget();
+    void InitWidget();
+    void InitContent();
+
+public slots:
+    void SlotAddImgs();
+signals:
+    void SigLoadImgs(const QList<QImage>& imgs);
 };
 #endif // ZZCONFIGWIDGET_H

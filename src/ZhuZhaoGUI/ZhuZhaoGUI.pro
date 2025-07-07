@@ -8,13 +8,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     ZZConfigWidget/ZZConfigWidget.cpp \
     ZZConfigWidget/ZZOneParameterWidget.cpp \
+    ZZThumWidget/LitImgItemWidget.cpp \
+    ZZThumWidget/VThumnailList.cpp \
     main.cpp \
     MainWindow.cpp
 
 HEADERS += \
     MainWindow.h \
     ZZConfigWidget/ZZConfigWidget.h \
-    ZZConfigWidget/ZZOneParameterWidget.h
+    ZZConfigWidget/ZZOneParameterWidget.h \
+    ZZThumWidget/LitImgItemWidget.h \
+    ZZThumWidget/VThumnailList.h \
+    const/const.h
 
 RESOURCES += \
     ZhuZhaoGUIResource.qrc

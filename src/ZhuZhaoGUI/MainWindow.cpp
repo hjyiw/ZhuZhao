@@ -1,5 +1,6 @@
 ﻿#include "MainWindow.h"
 #include "ZZConfigWidget/ZZConfigWidget.h"
+#include "ZZThumWidget/VThumnailList.h"
 #include <QBoxLayout>
 #include <QPushButton>
 #include <QSplitter>
@@ -14,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent)
     {
         throw std::bad_alloc();
     }
+
+    InitContent();
 }
 
 MainWindow::~MainWindow() {}
@@ -48,9 +51,17 @@ bool MainWindow::InitWidget()
     pLeftVSplitter->addWidget(m_pLeftTopWidget);
     pLeftVSplitter->addWidget(m_pLeftBottomWidget);
 
+
     // 右布局
     auto *pRightHLayout = new QHBoxLayout();
     pRightHLayout->setContentsMargins(0, 0, 0, 0);
+
+    // 垂直图片列表
+    m_pVThumnailList = new VThumnailList(this);
+    m_pVThumnailList->setFixedWidth(150);
+
+    pRightHLayout->addWidget(m_pVThumnailList);
+    pRightHLayout->addStretch();
 
     m_pRightWidget->setLayout(pRightHLayout);
 
@@ -69,4 +80,12 @@ bool MainWindow::InitWidget()
 
     this->setCentralWidget(m_pMainWidget);
     return true;
+}
+
+// 初始化内容
+void MainWindow::InitContent()
+{
+    // 加载图片到垂直图片列表
+    connect(m_pConfigWidget,&ZZConfigWidget::SigLoadImgs,m_pVThumnailList,&VThumnailList::SlotAddImages);
+    m_pConfigWidget->SlotAddImgs();
 }

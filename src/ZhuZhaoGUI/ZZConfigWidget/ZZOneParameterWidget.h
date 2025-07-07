@@ -12,6 +12,8 @@ public:
     explicit ZZOneParameterWidget(const QString& title,QWidget *parent = nullptr);
 
     void setTitle(QString title);
+
+    QImage GetImage() const;
 private:
     QWidget* m_pTopWidget;
     QWidget* m_pBottomWidget;
@@ -22,10 +24,15 @@ private:
     QDoubleSpinBox* m_pTiltSpinBox;
     QPushButton* m_pLoadBtn;
     QString m_strParamTitle;
+    QImage m_imgSrc;
 
 private:
-    void initWidget();
+    void InitWidget();
+    void InitContent();
+private slots:
+    void SlotLoadImg();
 signals:
+    void SigLoadImg();
 };
 
 #endif // ZZONEPARAMETERWIDGET_H
