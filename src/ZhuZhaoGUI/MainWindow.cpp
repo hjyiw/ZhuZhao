@@ -1,6 +1,8 @@
 ﻿#include "MainWindow.h"
 #include "ZZConfigWidget/ZZConfigWidget.h"
 #include "ZZThumWidget/VThumnailList.h"
+#include "ZZThumWidget/HThumnailList.h"
+#include "ZZViewWidget/CustomImageViewWidget.h"
 #include <QBoxLayout>
 #include <QPushButton>
 #include <QSplitter>
@@ -9,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     setWindowTitle(tr("ZhuZhuaoGUI"));
-    setMinimumSize(1000, 600);
+    setMinimumSize(1100, 500);
     // 初始化界面
     if (false == InitWidget())
     {
@@ -60,8 +62,19 @@ bool MainWindow::InitWidget()
     m_pVThumnailList = new VThumnailList(this);
     m_pVThumnailList->setFixedWidth(150);
 
-    pRightHLayout->addWidget(m_pVThumnailList);
-    pRightHLayout->addStretch();
+    // 视图
+    QVBoxLayout* pVViewLayout = new QVBoxLayout();
+    pVViewLayout->setContentsMargins(0,0,0,0);
+    pVViewLayout->setSpacing(0);
+
+    m_pImageViewWidget = new CustomImageViewWidget(this);
+    m_pHThumnailList = new HThumnailList(this);
+
+    pVViewLayout->addWidget(m_pImageViewWidget,3);
+    pVViewLayout->addWidget(m_pHThumnailList,1);
+
+    pRightHLayout->addWidget(m_pVThumnailList,1);
+    pRightHLayout->addLayout(pVViewLayout,2);
 
     m_pRightWidget->setLayout(pRightHLayout);
 
@@ -88,4 +101,7 @@ void MainWindow::InitContent()
     // 加载图片到垂直图片列表
     connect(m_pConfigWidget,&ZZConfigWidget::SigLoadImgs,m_pVThumnailList,&VThumnailList::SlotAddImages);
     m_pConfigWidget->SlotAddImgs();
+
+    // 双击展示图片到视图
+    connect(m_pVThumnailList,&VThumnailList::SigShowImg,m_pImageViewWidget,&CustomImageViewWidget::SlotShowImg);
 }
