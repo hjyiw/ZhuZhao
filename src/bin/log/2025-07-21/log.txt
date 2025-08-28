@@ -1,0 +1,5 @@
+[Debug][2025-07-21 23:07:24]??????
+[Debug][2025-07-21 23:11:41]?????????
+[Debug][2025-07-21 23:17:15] [FUNCTION]:  MainWindow::MainWindow  [LINE]:  24  [LOG]:  ????????
+[Debug][2025-07-21 23:18:41] [FUNCTION]:  MainWindow::MainWindow  [LINE]:  24  [LOG]:  ��ʼ���ɹ�
+[Debug][2025-07-21 23:20:40] [FUNCTION]:  MainWindow::MainWindow  [LINE]:  24  [LOG]:  ��ʼ���ɹ�

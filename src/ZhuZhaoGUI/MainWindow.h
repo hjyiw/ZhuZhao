@@ -9,6 +9,7 @@ class VThumnailList;
 class HThumnailList;
 class QPushButton;
 class CustomImageViewWidget;
+class ZZLogWidget;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -29,5 +30,6 @@ private:
     VThumnailList* m_pVThumnailList{Q_NULLPTR};
     HThumnailList* m_pHThumnailList{Q_NULLPTR};
     CustomImageViewWidget* m_pImageViewWidget{Q_NULLPTR};
+    ZZLogWidget* m_pLogWidget{Q_NULLPTR};
 };
 #endif // MAINWINDOW_H

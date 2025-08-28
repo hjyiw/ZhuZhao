@@ -6,6 +6,8 @@ HThumnailList::HThumnailList(QWidget *parent)
     : QWidget{parent}
 {
     InitWindow();
+    QList<QImage> listImg{QImage(),QImage(),QImage()};
+    AddImages(listImg);
 }
 
 void HThumnailList::InitWindow()

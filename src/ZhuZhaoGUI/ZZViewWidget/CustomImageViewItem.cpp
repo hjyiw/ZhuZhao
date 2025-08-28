@@ -19,10 +19,10 @@ void CustomImageViewItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
     // 提取RGB
     pixmap().toImage().pixelColor(x,y).getRgb(&R,&G,&B);
 
-    QString strInfo = QString(tr(" W:%1 H:%2 | X:%3 Y:%4 | R:%5 G:%6 B:%7")
+    QString strInfo = QString(" W:%1 H:%2 | X:%3 Y:%4 | R:%5 G:%6 B:%7")
                                   .arg(w).arg(h)
                                   .arg(x).arg(y)
-                                  .arg(R).arg(G).arg(B));
+                                  .arg(R).arg(G).arg(B);
     emit SigPosInfo(strInfo);
     QGraphicsPixmapItem::hoverMoveEvent(event);
 }

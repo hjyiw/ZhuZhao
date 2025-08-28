@@ -8,6 +8,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     ZZConfigWidget/ZZConfigWidget.cpp \
     ZZConfigWidget/ZZOneParameterWidget.cpp \
+    ZZLogWidget/ZZLogMessage.cpp \
+    ZZLogWidget/ZZLogWidget.cpp \
     ZZThumWidget/HThumnailList.cpp \
     ZZThumWidget/LitImgItemWidget.cpp \
     ZZThumWidget/VThumnailList.cpp \
@@ -21,6 +23,8 @@ HEADERS += \
     MainWindow.h \
     ZZConfigWidget/ZZConfigWidget.h \
     ZZConfigWidget/ZZOneParameterWidget.h \
+    ZZLogWidget/ZZLogMessage.h \
+    ZZLogWidget/ZZLogWidget.h \
     ZZThumWidget/HThumnailList.h \
     ZZThumWidget/LitImgItemWidget.h \
     ZZThumWidget/VThumnailList.h \
@@ -39,6 +43,9 @@ CONFIG(debug, debug|release){
 }
 # 设置图标
 RC_ICONS = zhuzhao_logo.ico
+
+# 翻译文件
+TRANSLATIONS += language_ch.ts
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

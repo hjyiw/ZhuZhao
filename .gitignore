@@ -1,1 +1,8 @@
 src/ZhuZhaoGUI/build/
+
+out/
+build/
+CMakeFiles/
+CMakeCache.txt
+
+.vs/

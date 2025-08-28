@@ -3,10 +3,12 @@
 #include "ZZThumWidget/VThumnailList.h"
 #include "ZZThumWidget/HThumnailList.h"
 #include "ZZViewWidget/CustomImageViewWidget.h"
+#include "ZZLogWidget/ZZLogWidget.h"
+#include "ZZLogWidget/ZZLogMessage.h"
+
 #include <QBoxLayout>
 #include <QPushButton>
 #include <QSplitter>
-#include <QDebug>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -50,6 +52,16 @@ bool MainWindow::InitWidget()
     // 左下角
     m_pLeftBottomWidget->setMinimumHeight(100);
 
+    QVBoxLayout* pVLogLayout = new QVBoxLayout();
+    pVLogLayout->setContentsMargins(0,0,0,0);
+    pVLogLayout->setSpacing(0);
+
+    m_pLogWidget = new ZZLogWidget(this);
+
+    pVLogLayout->addWidget(m_pLogWidget);
+
+    m_pLeftBottomWidget->setLayout(pVLogLayout);
+
     pLeftVSplitter->addWidget(m_pLeftTopWidget);
     pLeftVSplitter->addWidget(m_pLeftBottomWidget);
 
@@ -60,7 +72,7 @@ bool MainWindow::InitWidget()
 
     // 垂直图片列表
     m_pVThumnailList = new VThumnailList(this);
-    m_pVThumnailList->setFixedWidth(150);
+    m_pVThumnailList->setFixedWidth(130);
 
     // 视图
     QVBoxLayout* pVViewLayout = new QVBoxLayout();
@@ -70,7 +82,7 @@ bool MainWindow::InitWidget()
     m_pImageViewWidget = new CustomImageViewWidget(this);
     m_pHThumnailList = new HThumnailList(this);
 
-    pVViewLayout->addWidget(m_pImageViewWidget,3);
+    pVViewLayout->addWidget(m_pImageViewWidget,4);
     pVViewLayout->addWidget(m_pHThumnailList,1);
 
     pRightHLayout->addWidget(m_pVThumnailList,1);
